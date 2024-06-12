@@ -26,14 +26,25 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun getSuggestion(skillInput: String): String {
-        val skill = skillInput.lowercase(Locale.getDefault())
-
-        return when {
-            skill.contains("remate") -> "Treino de Remate:\n- 3 séries de 10 remates com cada pé.\n- 2 séries de 10 remates com a bola em movimento."
-            skill.contains("passe") -> "Treino de Passe:\n- 3 séries de 20 passes curtos.\n- 2 séries de 20 passes longos."
-            skill.contains("drible") -> "Treino de Drible:\n- 3 séries de 10 dribles entre cones.\n- 2 séries de dribles com mudança de direção."
-            skill.contains("defesa") -> "Treino de Defesa:\n- 3 séries de 10 desarmes.\n- 2 séries de 10 interceptações."
+        return when (skillInput.lowercase(Locale.getDefault())) {
+            "remate" -> "Treino de Remate:\n- 3 séries de 10 remates com cada pé.\n- 2 séries de 10 remates com a bola em movimento."
+            "passe" -> "Treino de Passe:\n- 3 séries de 20 passes curtos.\n- 2 séries de 20 passes longos."
+            "drible" -> "Treino de Drible:\n- 3 séries de 10 dribles entre cones.\n- 2 séries de dribles com mudança de direção."
+            "defesa" -> "Treino de Defesa:\n- 3 séries de 10 desarmes.\n- 2 séries de 10 interceptações."
             else -> "Desculpe, não temos um treino específico para essa habilidade."
         }
+    }
+    private fun startTimer(tvTimer: TextView) {
+        val timer = object : CountDownTimer(60000, 1000) { // 60 segundos
+            override fun onTick(millisUntilFinished: Long) {
+                val seconds = millisUntilFinished / 1000
+                tvTimer.text = String.format("%02d:%02d", seconds / 60, seconds % 60)
+            }
+
+            override fun onFinish() {
+                tvTimer.text = "00:00"
+            }
+        }
+        timer.start()
     }
 }
