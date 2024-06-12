@@ -14,11 +14,10 @@
         android:layout_gravity="center_horizontal"
         android:padding="16dp" />
 
-    <EditText
-        android:id="@+id/et_skill"
+    <Spinner
+        android:id="@+id/spinner_skill"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Digite a habilidade (ex: Remate)" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_suggest"
@@ -37,4 +36,21 @@
         android:padding="16dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/btn_start_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Treino"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp" />
 </LinearLayout>
