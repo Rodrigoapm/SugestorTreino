@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.seu_nome.futsaltrainer">
+    package="com.example.sugestortreino">
 
     <application
         android:allowBackup="true"

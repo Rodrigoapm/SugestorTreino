@@ -1,4 +1,4 @@
-package com.seu_nome.futsaltrainer
+package com.seu_nome.sugestortreino
 
 import android.content.Intent
 import android.os.Bundle
