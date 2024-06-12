@@ -1,4 +1,4 @@
-package com.seu_nome.sugestortreino
+package com.example.sugestortreino
 
 import android.os.Bundle
 import android.os.CountDownTimer

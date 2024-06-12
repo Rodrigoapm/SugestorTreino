@@ -1,4 +1,4 @@
-package com.seu_nome.sugestortreino
+package com.example.sugestortreino
 
 import android.content.Intent
 import android.os.Bundle
