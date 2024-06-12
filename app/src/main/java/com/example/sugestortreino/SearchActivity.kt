@@ -1,8 +1,10 @@
 package com.seu_nome.futsaltrainer
 
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sugestortreino.R
@@ -14,14 +16,26 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val etSkill: EditText = findViewById(R.id.et_skill)
+        val spinnerSkill: Spinner = findViewById(R.id.spinner_skill)
         val tvSuggestion: TextView = findViewById(R.id.tv_suggestion)
         val btnSuggest: Button = findViewById(R.id.btn_suggest)
+        val tvTimer: TextView = findViewById(R.id.tv_timer)
+        val btnStartTimer: Button = findViewById(R.id.btn_start_timer)
+
+        // Adicionando habilidades ao Spinner
+        val skills = arrayOf("Remate", "Passe", "Drible", "Defesa")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, skills)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerSkill.adapter = adapter
 
         btnSuggest.setOnClickListener {
-            val skillInput = etSkill.text.toString().trim()
-            val suggestion = getSuggestion(skillInput)
+            val skillSelected = spinnerSkill.selectedItem.toString()
+            val suggestion = getSuggestion(skillSelected)
             tvSuggestion.text = suggestion
+        }
+
+        btnStartTimer.setOnClickListener {
+            startTimer(tvTimer)
         }
     }
 
