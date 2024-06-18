@@ -11,15 +11,21 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -127,27 +133,43 @@ fun SearchScreen() {
         }
     }
 }
-//    private fun getSuggestion(skillInput: String): String {
-//        return when (skillInput.lowercase(Locale.getDefault())) {
-//            "remate" -> "Treino de Remate:\n- 3 séries de 10 remates com cada pé.\n- 2 séries de 10 remates com a bola em movimento."
-//            "passe" -> "Treino de Passe:\n- 3 séries de 20 passes curtos.\n- 2 séries de 20 passes longos."
-//            "finta" -> "Treino de finta:\n- 3 séries de 10 fintas entre cones.\n- 2 séries de fintas com mudança de direção."
-//            "defesa" -> "Treino de Defesa:\n- 3 séries de 10 desarmes.\n- 2 séries de 10 interceptações."
-//            "Remate" -> "Treino de Remate:\n- 3 séries de 5 remates na area dos 5 metros. \n- 3 series de 5 remates cruzados.\n- 2 series de remates so com 1 toque na bola."
-//            else -> "Desculpe, não temos um treino específico para essa habilidade."
-//        }
-//    }
-//    private fun startTimer(tvTimer: TextView) {
-//        val timer = object : CountDownTimer(60000, 1000) { // 60 segundos
-//            override fun onTick(millisUntilFinished: Long) {
-//                val seconds = millisUntilFinished / 1000
-//                tvTimer.text = String.format("%02d:%02d", seconds / 60, seconds % 60)
-//            }
-//
-//            override fun onFinish() {
-//                tvTimer.text = "00:00"
-//            }
-//        }
-//        timer.start()
-//    }
-//}
+@Composable
+fun DropdownMenu(selectedSkill: String, skills: List<String>, onSkillSelected: (String) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    var selectedText by remember { mutableStateOf(selectedSkill) }
+
+    Box(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { expanded = !expanded }
+        ) {
+            TextField(
+                value = selectedText,
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Treinos") },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                },
+                modifier = Modifier
+                    .menuAnchor()
+                    .fillMaxWidth()
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                skills.forEach { skill ->
+                    DropdownMenuItem(
+                        text = { Text(skill) },
+                        onClick = {
+                            selectedText = skill
+                            onSkillSelected(skill)
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
