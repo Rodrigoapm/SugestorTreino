@@ -173,3 +173,13 @@ fun DropdownMenu(selectedSkill: String, skills: List<String>, onSkillSelected: (
         }
     }
 }
+private fun getSuggestion(skillInput: String): String {
+    return when (skillInput.lowercase(Locale.getDefault())) {
+        "remate" -> "Treino de Remate:\n- 3 séries de 10 remates com cada pé.\n- 2 séries de 10 remates com a bola em movimento."
+        "passe" -> "Treino de Passe:\n- 3 séries de 20 passes curtos.\n- 2 séries de 20 passes longos."
+        "finta" -> "Treino de finta:\n- 3 séries de 10 fintas entre cones.\n- 2 séries de fintas com mudança de direção."
+        "defesa" -> "Treino de Defesa:\n- 3 séries de 10 desarmes.\n- 2 séries de 10 interceptações."
+        "Remate" -> "Treino de Remate:\n- 3 séries de 5 remates na area dos 5 metros. \n- 3 series de 5 remates cruzados.\n- 2 series de remates so com 1 toque na bola."
+        else -> "Desculpe, não temos um treino específico para essa habilidade."
+    }
+}
