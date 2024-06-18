@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".SearchActivity">
@@ -9,10 +10,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="O que deseja melhorar?"
-        android:textSize="18sp"
         android:layout_gravity="center_horizontal"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="O que deseja melhorar?"
+        android:textSize="18sp" />
 
     <Spinner
         android:id="@+id/spinner_skill"
@@ -24,34 +25,34 @@
         android:id="@+id/btn_suggest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sugerir Treino"
         android:layout_gravity="center_horizontal"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="Sugerir Treino" />
 
     <TextView
         android:id="@+id/tv_suggestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="16sp"
-        android:padding="16dp"
         android:layout_gravity="center_horizontal"
-        android:gravity="center" />
+        android:gravity="center"
+        android:padding="16dp"
+        android:text=""
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00"
-        android:textSize="24sp"
         android:layout_gravity="center_horizontal"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="00:00"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btn_start_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Treino"
         android:layout_gravity="center_horizontal"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="Iniciar Treino" />
 </LinearLayout>
