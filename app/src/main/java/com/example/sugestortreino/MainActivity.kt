@@ -2,13 +2,12 @@ package com.example.sugestortreino
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -26,8 +25,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.sugestortreino.R
 import com.example.sugestortreino.ui.theme.SugestorTreinoTheme
+import com.example.sugestortreino.R.drawable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +55,8 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = androidx.compose.foundation.layout.R.drawable.background),
-            contentDescription = "Background Image",
+            painter = painterResource(id = R.drawable.background),
+            contentDescription = "Background",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
