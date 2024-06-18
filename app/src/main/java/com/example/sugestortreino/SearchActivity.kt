@@ -6,25 +6,46 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import com.example.sugestortreino.R
+import com.example.sugestortreino.ui.theme.SugestorTreinoTheme
 import java.util.Locale
 
-class SearchActivity : AppCompatActivity() {
-
+class SearchActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
+        setContent {
+            SugestorTreinoTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    SearchScreen()
+                }
+            }
+        }
+    }
+}
 
-        val spinnerSkill: Spinner = findViewById(R.id.spinner_skill)
-        val tvSuggestion: TextView = findViewById(R.id.tv_suggestion)
-        val btnSuggest: Button = findViewById(R.id.btn_suggest)
-        val tvTimer: TextView = findViewById(R.id.tv_timer)
-        val btnStartTimer: Button = findViewById(R.id.btn_start_timer)
-
-        // Adicionando habilidades ao Spinner
-        val skills = arrayOf("Remate", "Passe", "Finta", "Defesa", "Remate")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, skills)
+@Composable
+fun SearchScreen() {
+    var selectedSkill by remember { mutableStateOf("Pesquise o seu treino") }
+    var suggestion by remember { mutableStateOf("Treino escolhido") }
+    var timerText by remember { mutableStateOf("00:00") }
+    // Adicionando habilidades ao Spinner
+    val skills = arrayOf("Remate", "Passe", "Finta", "Defesa", "Remate")
+    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, skills)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerSkill.adapter = adapter
 
