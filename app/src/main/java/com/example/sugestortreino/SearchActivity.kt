@@ -62,7 +62,7 @@ fun SearchScreen() {
     var selectedSkill by remember { mutableStateOf("Pesquise o seu treino") }
     var suggestion by remember { mutableStateOf("Treino escolhido") }
     var timerText by remember { mutableStateOf("00:00") }
-    // Adicionando habilidades ao DropDownMenu
+    // Adicionadas habilidades ao DropDownMenu
     val skills = arrayOf("Corrida", "Passe", "Finta", "Defesa", "Remate")
     Image(
         painter = painterResource(id = R.drawable.background),
