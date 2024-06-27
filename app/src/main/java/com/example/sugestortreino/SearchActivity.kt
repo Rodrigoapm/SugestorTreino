@@ -63,7 +63,7 @@ fun SearchScreen() {
     var suggestion by remember { mutableStateOf("Treino escolhido") }
     var timerText by remember { mutableStateOf("00:00") }
     // Adicionando habilidades ao DropDownMenu
-    val skills = arrayOf("Remate", "Passe", "Finta", "Defesa", "Remate")
+    val skills = arrayOf("Corrida", "Passe", "Finta", "Defesa", "Remate")
     Image(
         painter = painterResource(id = R.drawable.background),
         contentDescription = "Background Image",
@@ -173,7 +173,7 @@ fun DropdownMenu(selectedSkill: String, skills: Array<String>, onSkillSelected: 
 }
 private fun getSuggestion(skillInput: String): String {
     return when (skillInput.lowercase(Locale.getDefault())) {
-        "remate" -> "Treino de Remate:\n- 3 séries de 10 remates com cada pé.\n- 2 séries de 10 remates com a bola em movimento."
+        "corrida" -> "Treino de corrida:\n- 3 voltas ao recinto.\n- 3 séries de 2 sprints."
         "passe" -> "Treino de Passe:\n- 3 séries de 20 passes curtos.\n- 2 séries de 20 passes longos."
         "finta" -> "Treino de finta:\n- 3 séries de 10 fintas entre cones.\n- 2 séries de fintas com mudança de direção."
         "defesa" -> "Treino de Defesa:\n- 3 séries de 10 desarmes.\n- 2 séries de 10 interceptações."
